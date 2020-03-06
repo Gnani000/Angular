@@ -14,25 +14,25 @@
             <div class="row">
                 <div class="col-6">
                     <div class="float-left">
-                    Contact Us: emart@abc.com
+                        Contact Us: emart@abc.com
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="float-right">
-                    Buyer Name: {{ buyerName }}
+                        Buyer Name: {{ currentBuyer.buyerUsername }}
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <div class="float-left">
-                    Date: {{ todayDate }}
+                        Date: {{ currentBuyer.buyerDate }}
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="float-right">
-                    Buyer Id: {{ buyerId }}
-                </div>
+                        Buyer Id: {{ currentBuyer.buyerId }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,28 +51,28 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of cartItems">
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.name }}</td>
+                    <td>{{ item.itemId }}</td>
+                    <td>{{ item.itemDescription }}</td>
                     <td>1</td>
-                    <td>Rs. {{ item.price }}</td>
-                    <td>Rs. {{ item.price }}</td>
+                    <td>₹ {{ item.itemPrice }}</td>
+                    <td>₹ {{ item.itemPrice }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><h5>Total:</h5></td>
-                    <td>Rs. {{ amount }}</td>
+                    <td>
+                        <h5>Total:</h5>
+                    </td>
+                    <td>₹ {{ amount }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="row m-2">
         <div class="table-responsive m-5">
-            <button type="button" 
-                    class="btn btn-secondary ml-5 w-75"
-                    (click)="addBill()">
-                    Pay Amount
+            <button type="button" class="btn btn-success ml-5 w-75" (click)="addBill()">
+                Pay Amount
             </button>
         </div>
     </div>

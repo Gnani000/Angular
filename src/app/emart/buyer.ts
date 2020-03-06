@@ -1,3 +1,5 @@
+import { Bill } from './bill';
+
 export interface Buyer{
     id: number,
     username: string,

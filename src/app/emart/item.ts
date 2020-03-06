@@ -1,5 +1,6 @@
 import { SubCategory } from './sub-category';
-
+import { Seller } from './seller';
+ 
 export interface Item{
     id: number,
     name: string,

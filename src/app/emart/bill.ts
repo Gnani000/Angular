@@ -1,6 +1,7 @@
 import { Item } from './item';
+import { BillDetails } from './bill-details';
 
-export interface Bill {
+export interface Bill{
     id: number,
     buyerId: number,
     type: string,

@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getLoggedIn(){
+  getLoggedIn() {
     return this.loginService.loggedIn;
   }
 }

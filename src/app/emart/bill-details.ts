@@ -1,8 +1,8 @@
 import { Item } from './item';
 
-export interface BillDetails {
+
+export interface BillDetails{
     id: number,
     billId: number,
-    itemId: number,
-    noitem: number  
+    items: Item[]
 }

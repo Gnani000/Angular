@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmartService } from '../../emart.service';
-import { Item } from '../../item';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,18 +8,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent implements OnInit {
-  allItems: Item[];
+  allItems: any;
+  currentBuyer: any;
   constructor(protected emartService: EmartService,
               protected router:Router) { }
 
   ngOnInit(): void {
-    this.allItems = this.emartService.getAllItems();
+    this.emartService.getAllItems().subscribe((response)=> {
+      this.allItems = response;
+      console.log(this.allItems);
+    }
+);
 
   }
 
-  displayItemDetails(itemID: number){
-    this.router.navigate(['/item-display/'+itemID]);
+  displayItemDetails(itemId: number){
+    this.router.navigate(['/item-display/'+itemId]);
     
+  }
+
+  addToCart(item: any){
+    this.emartService.addToCart(item);
+    this.router.navigate(['item-list']);
   }
 
 }

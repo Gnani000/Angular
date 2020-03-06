@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmartService } from '../../emart.service';
-import { Item } from '../../item';
 import { Category } from '../../category';
 import { SubCategory } from '../../sub-category';
 
@@ -12,7 +11,7 @@ import { SubCategory } from '../../sub-category';
 })
 export class ItemDisplayComponent implements OnInit {
 
-  item:Item;
+  item:any;
   category: Category;
   subCategory: SubCategory;
 
@@ -26,15 +25,16 @@ export class ItemDisplayComponent implements OnInit {
         .subscribe(
                     (param)=>{
                                 let id = param.get('iId');  
-                                this.item = this.emartService.getItem(id);
-                                this.category = this.emartService.getCategory(this.item.categoryId);
-                                this.subCategory = this.emartService.getSubCategory(this.item.subCategoryId);  
+                                this.emartService.getItem(id).subscribe((response)=> {
+                                  this.item =  response;
+                                }
+                                ); 
                               }
                   );
   }
 
-  addToCart(itemId: number){
-    this.emartService.addToCart(itemId);
+  addToCart(item: any){
+    this.emartService.addToCart(item);
     this.router.navigate(['item-list']);
   }
 
